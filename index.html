@@ -6,10 +6,8 @@
     <title>Raoul Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {},
-            }
+        if (typeof tailwind === 'undefined') {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.2.7/tailwind.min.js"><\/script>');
         }
     </script>
     <style>
@@ -17,88 +15,41 @@
             background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&h=1080') no-repeat center center fixed;
             background-size: cover;
         }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out forwards;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .scale-in {
-            animation: scaleIn 0.3s ease-in-out forwards;
-        }
-        @keyframes scaleIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        .product-image:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out;
-        }
     </style>
-    <script>
-        function showCollection() {
-            document.getElementById("home").classList.add("hidden");
-            const collection = document.getElementById("collection");
-            collection.classList.remove("hidden");
-            collection.classList.add("fade-in");
-        }
-        function openDescription(title, description, image) {
-            const popup = document.getElementById("popup");
-            document.getElementById("popup-title").innerText = title;
-            document.getElementById("popup-description").innerText = description;
-            document.getElementById("popup-image").src = image;
-            popup.classList.remove("hidden");
-            popup.classList.add("scale-in");
-        }
-        function closeDescription() {
-            document.getElementById("popup").classList.add("hidden");
-        }
-    </script>
 </head>
-<body class="bg-gray-900 text-white">
-    <section id="home" class="container mx-auto my-20 px-4 text-center flex justify-center items-center">
-        <h1 class="text-3xl font-bold mb-5">Bienvenue sur Raoul Pro</h1>
-        <p class="text-lg mb-5">Découvrez notre collection exclusive de vêtements et accessoires.</p>
-        <button onclick="showCollection()" class="bg-white text-black px-6 py-3 rounded-lg shadow-lg">Cliquer ici pour découvrir</button>
-    </section>
-    
-    <section id="collection" class="container mx-auto my-10 px-4 hidden">
-        <h2 class="text-center text-xl font-semibold mb-5">Nos Produits</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                <img src="https://i.imgur.com/KMerOaH.jpeg" alt="Élégance Noire" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Élégance Noire', 'Une tenue sophistiquée qui allie modernité et raffinement.', 'https://i.imgur.com/KMerOaH.jpeg')">
-                <h3 class="text-lg font-medium mt-2">Élégance Noire</h3>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div class="container mx-auto px-4">
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-3xl font-bold mb-5">Bienvenue sur Raoul Pro</h1>
+            <p class="text-lg mb-5">Découvrez notre collection exclusive de vêtements et accessoires.</p>
+            <button onclick="showCollection()" class="bg-white text-black px-6 py-3 rounded-lg shadow-lg">Cliquer ici pour découvrir</button>
+        </section>
+
+        <section id="collection" class="hidden min-h-screen flex flex-col justify-center items-center">
+            <h2 class="text-center text-xl font-semibold mb-5">Nos Produits</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
+                    <img src="https://i.imgur.com/KMerOaH.jpeg" alt="Élégance Noire" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Élégance Noire', 'Une tenue sophistiquée qui allie modernité et raffinement.', 'https://i.imgur.com/KMerOaH.jpeg')">
+                    <h3 class="text-lg font-medium mt-2">Élégance Noire</h3>
+                </div>
+                <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
+                    <img src="https://i.imgur.com/F2LHujQ.jpeg" alt="Casual Urbain" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Casual Urbain', 'Un style décontracté parfait pour toutes les occasions.', 'https://i.imgur.com/F2LHujQ.jpeg')">
+                    <h3 class="text-lg font-medium mt-2">Casual Urbain</h3>
+                </div>
             </div>
-            <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                <img src="https://i.imgur.com/F2LHujQ.jpeg" alt="Casual Urbain" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Casual Urbain', 'Un style décontracté parfait pour toutes les occasions.', 'https://i.imgur.com/F2LHujQ.jpeg')">
-                <h3 class="text-lg font-medium mt-2">Casual Urbain</h3>
-            </div>
-            <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                <img src="https://i.imgur.com/Wob0WV8.jpeg" alt="Sac Prestige" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Sac Prestige', 'Un sac à dos en cuir au design intemporel et ergonomique.', 'https://i.imgur.com/Wob0WV8.jpeg')">
-                <h3 class="text-lg font-medium mt-2">Sac Prestige</h3>
-            </div>
-            <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                <img src="https://i.imgur.com/EtyQ6n8.jpeg" alt="Tendance Minimaliste" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Tendance Minimaliste', 'Un design épuré pour une allure intemporelle.', 'https://i.imgur.com/EtyQ6n8.jpeg')">
-                <h3 class="text-lg font-medium mt-2">Tendance Minimaliste</h3>
-            </div>
-        </div>
-    </section>
-    
+        </section>
+    </div>
     <footer class="bg-black text-white text-center py-4 mt-10">
         &copy; 2025 Raoul Pro - Tous droits réservés
     </footer>
+    <script>
+        function showCollection() {
+            document.getElementById("home").classList.add("hidden");
+            document.getElementById("collection").classList.remove("hidden");
+        }
+        function openDescription(title, description, image) {
+            alert(title + "\n\n" + description);
+        }
+    </script>
 </body>
 </html>
