@@ -15,6 +15,36 @@
             background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&h=1080') no-repeat center center fixed;
             background-size: cover;
         }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .scale-in {
+            animation: scaleIn 0.3s ease-in-out forwards;
+        }
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .product-image:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
@@ -25,30 +55,48 @@
             <button onclick="showCollection()" class="bg-white text-black px-6 py-3 rounded-lg shadow-lg">Cliquer ici pour découvrir</button>
         </section>
 
-        <section id="collection" class="hidden min-h-screen flex flex-col justify-center items-center">
+        <section id="collection" class="hidden min-h-screen flex flex-col justify-center items-center fade-in">
             <h2 class="text-center text-xl font-semibold mb-5">Nos Produits</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                    <img src="https://i.imgur.com/KMerOaH.jpeg" alt="Élégance Noire" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Élégance Noire', 'Une tenue sophistiquée qui allie modernité et raffinement.', 'https://i.imgur.com/KMerOaH.jpeg')">
+                    <img src="https://i.imgur.com/KMerOaH.jpeg" alt="Élégance Noire" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Élégance Noire', 'Une tenue sophistiquée qui allie modernité et raffinement.', 'https://i.imgur.com/KMerOaH.jpeg')">
                     <h3 class="text-lg font-medium mt-2">Élégance Noire</h3>
                 </div>
                 <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                    <img src="https://i.imgur.com/F2LHujQ.jpeg" alt="Casual Urbain" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Casual Urbain', 'Un style décontracté parfait pour toutes les occasions.', 'https://i.imgur.com/F2LHujQ.jpeg')">
+                    <img src="https://i.imgur.com/F2LHujQ.jpeg" alt="Casual Urbain" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Casual Urbain', 'Un style décontracté parfait pour toutes les occasions.', 'https://i.imgur.com/F2LHujQ.jpeg')">
                     <h3 class="text-lg font-medium mt-2">Casual Urbain</h3>
                 </div>
             </div>
         </section>
     </div>
+    
+    <div id="popup" class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center hidden">
+        <div class="bg-white text-black p-5 rounded-lg shadow-lg max-w-lg text-center relative scale-in">
+            <button class="absolute top-2 right-2 bg-gray-200 text-gray-800 p-2 rounded-full hover:bg-gray-400 transition" onclick="closeDescription()">✖</button>
+            <img id="popup-image" src="" alt="" class="w-full h-64 object-cover rounded-md">
+            <h2 id="popup-title" class="text-xl font-bold mt-3"></h2>
+            <p id="popup-description" class="mt-2 text-gray-700"></p>
+        </div>
+    </div>
+    
     <footer class="bg-black text-white text-center py-4 mt-10">
         &copy; 2025 Raoul Pro - Tous droits réservés
     </footer>
+    
     <script>
         function showCollection() {
             document.getElementById("home").classList.add("hidden");
             document.getElementById("collection").classList.remove("hidden");
         }
         function openDescription(title, description, image) {
-            alert(title + "\n\n" + description);
+            const popup = document.getElementById("popup");
+            document.getElementById("popup-title").innerText = title;
+            document.getElementById("popup-description").innerText = description;
+            document.getElementById("popup-image").src = image;
+            popup.classList.remove("hidden");
+        }
+        function closeDescription() {
+            document.getElementById("popup").classList.add("hidden");
         }
     </script>
 </body>
