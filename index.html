@@ -15,36 +15,6 @@
             background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&h=1080') no-repeat center center fixed;
             background-size: cover;
         }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out forwards;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .scale-in {
-            animation: scaleIn 0.3s ease-in-out forwards;
-        }
-        @keyframes scaleIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        .product-image:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out;
-        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
@@ -59,12 +29,20 @@
             <h2 class="text-center text-xl font-semibold mb-5">Nos Produits</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                    <img src="https://i.imgur.com/KMerOaH.jpeg" alt="Élégance Noire" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Élégance Noire', 'Une tenue sophistiquée qui allie modernité et raffinement.', 'https://i.imgur.com/KMerOaH.jpeg')">
+                    <img src="https://i.imgur.com/KMerOaH.jpeg" alt="Élégance Noire" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Élégance Noire', 'Une pièce intemporelle qui allie classe et modernité. Conçue avec des matériaux nobles, cette tenue garantit une élégance absolue en toute circonstance.', 'https://i.imgur.com/KMerOaH.jpeg')">
                     <h3 class="text-lg font-medium mt-2">Élégance Noire</h3>
                 </div>
                 <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
-                    <img src="https://i.imgur.com/F2LHujQ.jpeg" alt="Casual Urbain" class="w-full h-64 object-cover rounded-md cursor-pointer product-image" onclick="openDescription('Casual Urbain', 'Un style décontracté parfait pour toutes les occasions.', 'https://i.imgur.com/F2LHujQ.jpeg')">
+                    <img src="https://i.imgur.com/F2LHujQ.jpeg" alt="Casual Urbain" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Casual Urbain', 'Un look polyvalent parfait pour une vie active en ville. Ce style offre un confort optimal tout en restant raffiné et tendance.', 'https://i.imgur.com/F2LHujQ.jpeg')">
                     <h3 class="text-lg font-medium mt-2">Casual Urbain</h3>
+                </div>
+                <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
+                    <img src="https://i.imgur.com/Wob0WV8.jpeg" alt="Sac Prestige" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Sac Prestige', 'Un sac à dos en cuir raffiné, pensé pour les esprits exigeants. Sa conception ergonomique et son design soigné vous permettent de conjuguer style et praticité.', 'https://i.imgur.com/Wob0WV8.jpeg')">
+                    <h3 class="text-lg font-medium mt-2">Sac Prestige</h3>
+                </div>
+                <div class="bg-white text-black p-4 rounded-lg shadow-lg text-center">
+                    <img src="https://i.imgur.com/EtyQ6n8.jpeg" alt="Tendance Minimaliste" class="w-full h-64 object-cover rounded-md cursor-pointer" onclick="openDescription('Tendance Minimaliste', 'L'essence du design épuré pour une allure sophistiquée. Ce style minimaliste incarne l'équilibre parfait entre modernité et simplicité.', 'https://i.imgur.com/EtyQ6n8.jpeg')">
+                    <h3 class="text-lg font-medium mt-2">Tendance Minimaliste</h3>
                 </div>
             </div>
         </section>
